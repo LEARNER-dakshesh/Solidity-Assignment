@@ -1,35 +1,47 @@
-MyToken
-This is a simple Solidity smart contract for a custom token called "MyToken".
+# CurseToken Smart Contract
 
-Description
-MyToken is a basic ERC20-compatible token implemented in Solidity. It allows minting new tokens and burning existing ones.
+## Overview
 
+This smart contract is my submission for the Metacrafters ETH Proof: Beginner EVM Course. The contract implements a basic token system with minting and burning functionalities. It includes public variables to store token details, a mapping to track balances, events for logging actions, and functions to mint and burn tokens, as well as to check user balances.
 
-Requirements
-Token Name: Ether
-Token Abbreviation: Etherium
-Initial Total Supply: 0
-Functions
-Mint
+## Smart Contract Details
 
-The mint function allows the creation of new tokens. It takes two parameters: an address and a value. The function increases the total supply by the specified value and increases the balance of the provided address by that amount.
+The smart contract, `CurseToken`, consists of the following features:
 
-solidity
+1. **Public Variables**:
+   - `name`: Stores the name of the token, which is set to "Curse".
+   - `symbol`: Stores the abbreviation of the token, which is set to "CRS".
+   - `totalSupply`: Stores the total supply of tokens.
 
-function mint(address add, uint value) public {
-    // Add 'value' to total supply
-    // Increase balance of 'add' by 'value'
-}
-Burn
-The burn function allows the destruction of existing tokens. It takes two parameters: an address and a value. The function deducts the specified value from the total supply and from the balance of the provided address, given that the balance is greater than or equal to the burn amount.
+2. **Mapping**:
+   - `balances`: Maps addresses to their respective token balances.
 
-solidity
+3. **Events**:
+   - `Mint`: Logs the minting of tokens.
+   - `Burn`: Logs the burning of tokens.
 
-function burn(address add, uint value) public {
-    // If balance of 'add' is greater than or equal to 'value'
-    // Deduct 'value' from total supply
-    // Deduct 'value' from balance of 'add'
-}
-Usage
-To use this contract, deploy it to a supported Ethereum Virtual Machine (EVM) and interact with it using Ethereum wallets or other smart contracts.
-.
+4. **Functions**:
+   - `mint(address to, uint256 amount)`: Increases the total supply of tokens and the balance of the specified address by the given amount. Emits a `Mint` event.
+   - `burn(address from, uint256 amount)`: Decreases the total supply of tokens and the balance of the specified address by the given amount, provided the address has enough tokens to burn. Emits a `Burn` event.
+
+## Explanation
+
+### Public Variables
+
+- **Token Name (`name`)**: This variable stores the name of the token, which is set to "Curse".
+- **Token Abbreviation (`symbol`)**: This variable stores the abbreviation of the token, which is set to "CRS".
+- **Total Supply (`totalSupply`)**: This variable tracks the total supply of the tokens. Initially, it is set to 0.
+
+### Mapping
+
+- **Balances (`balances`)**: This mapping associates each address with its corresponding token balance. The key is an address, and the value is the balance of tokens that address holds.
+
+### Functions
+
+- **Mint Function (`mint`)**: This function increases the total supply of tokens by the specified amount and credits the same amount to the balance of the given address. It also emits a `Mint` event.
+  
+- **Burn Function (`burn`)**: This function decreases the total supply of tokens by the specified amount and deducts the same amount from the balance of the given address. The function checks if the address has enough tokens before proceeding with the burn. It also emits a `Burn` event.
+
+## Usage
+
+This contract can be tested and ran on Remix IDE.
