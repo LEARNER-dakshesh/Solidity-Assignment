@@ -15,27 +15,27 @@ pragma solidity ^0.8.0;
        to the amount that is supposed to be burned.
 */
 
-contract MyToken {
+contract CurseToken {
 
-    // public variables here
-    string public tk_name = "Ether";
-    string public tk_abbr = "Etherium";
-    uint public total_supply = 0;
+    // Public variables here
+    string public name = "Curse";
+    string public symbol = "CRS";
+    uint256 public totalSupply = 0;
 
-    // mapping variable here
-    mapping(address => uint) public balances;
+    // Mapping variable here
+    mapping(address => uint256) public balances;
 
-    // mint function
-    function mint(address add, uint value) public {
-        total_supply += value;
-        balances[add] += value;
+    // Mint function
+    function mint(address to, uint256 amount) public {
+        totalSupply += amount;
+        balances[to] += amount;
     }
 
-    // burn function
-    function burn(address add, uint value) public {
-        if(balances[add] >= value){
-            total_supply -= value;
-            balances[add] -= value;
-        }
+    // Burn function
+    function burn(address from, uint256 amount) public {
+        require(balances[from] >= amount, "Not enough balance to burn");
+        totalSupply -= amount;
+        balances[from] -= amount;
     }
+
 }
